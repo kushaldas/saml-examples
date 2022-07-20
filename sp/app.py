@@ -15,6 +15,13 @@ import ipdb
 
 app = Flask(__name__)
 
+with open("./saml2_backend.yaml") as fobj:
+    sp_config = SPConfig().load(yaml.load(fobj, SafeLoader)["config"]["sp_config"])
+
+
+sp = Saml2Client(sp_config)
+
+
 
 def rndstr(size=16, alphabet=""):
     """
@@ -42,12 +49,6 @@ def get_idp_entity_id():
     entity_id = only_idp
 
     return entity_id
-
-with open("./saml2_backend.yaml") as fobj:
-    sp_config = SPConfig().load(yaml.load(fobj, SafeLoader)["config"]["sp_config"])
-
-
-sp = Saml2Client(sp_config)
 
 
 @app.route("/")
