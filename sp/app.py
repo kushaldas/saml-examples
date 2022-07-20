@@ -70,6 +70,7 @@ def login():
         acs_endp, response_binding = sp.config.getattr("endpoints", "sp")[
             "assertion_consumer_service"
         ][0]
+        pprint(response_binding)
         relay_state = rndstr()
         entity_id = get_idp_entity_id()
         req_id, binding, http_args = sp.prepare_for_negotiated_authenticate(

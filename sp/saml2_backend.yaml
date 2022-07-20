@@ -2,7 +2,7 @@
 module: satosa.backends.saml2.SAMLBackend
 name: Saml2
 config:
-  idp_blacklist_file: /path/to/blacklist.json
+  idp_blacklist_file: /path/to/denylist.json
 
   acr_mapping:
     "": default-LoA
@@ -58,7 +58,7 @@ config:
             width: "100"
             height: "100"
         authn_requests_signed: true
-        want_response_signed: false
+        want_response_signed: true
         allow_unknown_attributes: true
         allow_unsolicited: true
         endpoints:
