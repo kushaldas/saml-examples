@@ -1,7 +1,7 @@
 from saml2.config import SPConfig
 from saml2.client import Saml2Client
 from saml2.metadata import create_metadata_string
-from saml2 import BINDING_HTTP_REDIRECT
+from saml2 import BINDING_HTTP_REDIRECT, BINDING_HTTP_POST
 from satosa.internal import AuthenticationInformation, InternalData
 from flask import Flask, redirect, request
 from flask.wrappers import Response
@@ -70,7 +70,6 @@ def login():
         acs_endp, response_binding = sp.config.getattr("endpoints", "sp")[
             "assertion_consumer_service"
         ][0]
-        pprint(response_binding)
         relay_state = rndstr()
         entity_id = get_idp_entity_id()
         req_id, binding, http_args = sp.prepare_for_negotiated_authenticate(
@@ -90,7 +89,7 @@ def login():
 @app.route("/acs/post", methods=["POST"])
 def acs_post():
     outstanding_queries = {}
-    binding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+    binding = BINDING_HTTP_POST
     authn_response = sp.parse_authn_request_response(
         request.form["SAMLResponse"], binding, outstanding=outstanding_queries
     )
