@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta charset="utf-8">
+    <title>Flask SP2</title>
+  </head>
+
+  <body>
+<style>
+.navitems { display: flex; }
+</style>
+    <nav class="navbar">
+      <ul>
+        {% if not current_user.is_authenticated %}
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% endif %}
+        <li>Link 2</li>
+        <li>Link 3</li>
+      </ul>
+
+    </nav>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

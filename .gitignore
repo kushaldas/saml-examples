@@ -2,3 +2,6 @@
 *.pem
 .vscode
 .venv
+*.sqlite
+*.pyc
+__pycache__
