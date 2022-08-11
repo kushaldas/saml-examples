@@ -52,7 +52,7 @@ def get_idp_entity_id():
 
 
 @app.route("/")
-def hello_world():
+def index():
     return '<p><a href="/login/">Login</a></p>'
 
 
