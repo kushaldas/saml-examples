@@ -3,10 +3,8 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
   <title>Flask SP2</title>
-</head>
-
-<body>
   <style>
     .navbar {
       display: flex;
@@ -27,6 +25,9 @@
       text-align: center;
     }
   </style>
+</head>
+
+<body>
   <nav class="navbar">
     <ul class="navitems">
       <li><a href="{{ url_for('index') }}">Home</a></li>
@@ -41,10 +42,12 @@
     </ul>
 
   </nav>
-  <div class="content">
-    {% block content %}
-    {% endblock %}
-  </div>
+  <main>
+    <div class="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
 </body>
 
 </html>
