@@ -2,8 +2,8 @@
 
 {% block content %}
 <h1>
-  Hello Friend
+  Hello {{ current_user.email }}
+
 </h1>
 
-This is the profile page of {{ current_user.email }}
 {% endblock %}
