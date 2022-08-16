@@ -124,9 +124,12 @@ def logout():
 def acs_post():
     outstanding_queries = {}
     binding = BINDING_HTTP_POST
-    authn_response = sp.parse_authn_request_response(
-        request.form["SAMLResponse"], binding, outstanding=outstanding_queries
-    )
+    try:
+        authn_response = sp.parse_authn_request_response(
+            request.form["SAMLResponse"], binding, outstanding=outstanding_queries
+        )
+    except:
+        return render_template("error.html"), 500
     # ipdb.set_trace()
     email = authn_response.ava["email"][0]
     # Now check if an user exists, or add one
