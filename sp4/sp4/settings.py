@@ -197,7 +197,7 @@ SAML_CONFIG = {
 
             # attributes that this project need to identify a user
             'required_attributes': [
-                'givenName', 'sn', 'email', 'displayName'
+                'givenName', 'sn', 'mail', 'email',
             ],
 
             # attributes that may be useful to have but not required
